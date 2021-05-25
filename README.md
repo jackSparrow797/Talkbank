@@ -8,6 +8,12 @@
  
  ## Классы и интерфейсы
  
+ Описать интерфейс купонов, создать от него базовый класс, а конечные классы промокодов наследовать от базового. Реализовать в них логику по их генерации (Насыщенная модель), так мы сможем добавлять новые типы промокодов, просто добавив новый класс промокода, создаем новый тип и всю логику его генерации оставляем внутри.
+ 
+ Для создания купонов лучше воспользоваться фабричным методом и в зависимости от типа, создавать объект промокода (class_exist можно использовать). 
+ 
+ Недоступными свойствами лучше сделать текущее число попыток, чтобы клиент не мог подменить данные. 
+ 
  ```
  interface PromocodeInterface
 {
@@ -16,7 +22,8 @@
     public function getCode(): string;
 
     public function getMaxAttempt(): int;
-
+    
+    public function generate(): string;
 }
 
 abstract class BasePromocode implements PromocodeInterface
@@ -39,6 +46,8 @@ abstract class BasePromocode implements PromocodeInterface
     {
         return static::TYPE;
     }
+    
+    //добавить геттеры и сеттеры
 
     abstract public function generate(): string;
 
