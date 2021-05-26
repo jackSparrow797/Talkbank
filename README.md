@@ -71,6 +71,20 @@ class PromoNumber extends BasePromocode
     }
 }
 
+class PromocodeRepository
+{
+     public function getDiscountBuCode(string $code): float
+    {
+        
+    }
+    
+    
+     public function addCoupon(PromocodeInterface $promocode): bool
+    {
+        
+    }
+}
+
 class PromocodeDto
 {
     /** @var string */
